@@ -4,4 +4,14 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="title_activity_home">HomeActivity</string>
+    <string-array name="movie_name">
+        <item>Breaking Bad</item>
+        <item>Better Call Saul</item>
+        <item>Narcos</item>
+    </string-array>
+    <string-array name="movie_desc">
+        <item>This is desc</item>
+        <item>This is desc</item>
+        <item>This is desc</item>
+    </string-array>
 </resources>
