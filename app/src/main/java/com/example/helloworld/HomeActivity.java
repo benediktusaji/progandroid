@@ -12,6 +12,7 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 
 import com.example.helloworld.services.MyJobScheduler;
+import com.example.helloworld.utils.SessionManagement;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
@@ -39,15 +40,6 @@ public class HomeActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = findViewById(R.id.fab);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
     }
     @Override
@@ -93,5 +85,15 @@ public class HomeActivity extends AppCompatActivity {
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
                 .build();
         notificationManager.notify(0, notification);
+    }
+
+    public void logout(View v) {
+        //Delete session
+        SessionManagement sessionManagement = new SessionManagement(HomeActivity.this);
+        sessionManagement.removeSession();
+
+        //go to loginactivity
+        Intent intent = new Intent(v.getContext(),LoginActivity.class);
+        startActivity(intent);
     }
 }
