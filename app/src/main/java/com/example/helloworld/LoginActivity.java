@@ -94,4 +94,9 @@ public class LoginActivity extends AppCompatActivity {
                     .build();
         notificationManager.notify(0, notification);
     }
+
+    public void moveToSignUpActivity(View v) {
+        Intent intent = new Intent(v.getContext(),SignUpActivity.class);
+        startActivity(intent);
+    }
 }
