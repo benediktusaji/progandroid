@@ -14,35 +14,56 @@ import android.content.IntentFilter;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.helloworld.models.User;
+import com.example.helloworld.utils.DBHelper;
+
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
     //Ini contoh komentar
     private static final String TAG = "Aktivitasku";
     public static final String CHANNEL_ID_1 = "Channel1";
     private WifiManager wifiManager;
+    private EditText txtUsername;
+    private EditText txtPassword;
+    private DBHelper db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        Log.d("Aktivitasku","Check");
         setContentView(R.layout.activity_login);
 
         final Button button = findViewById(R.id.btnLogin);
-        final EditText txtUsername = findViewById(R.id.editTextUsername);
-        final EditText txtPassword = findViewById(R.id.editTextPassword);
 
+        txtUsername = findViewById(R.id.editTextUsername);
+        txtPassword = findViewById(R.id.editTextPassword);
+        db = new DBHelper(this);
+
+        List<User> listUsers = db.getAllUsers();
+        Log.d(TAG, "Reading data: ");
+        for(int i=0;i<listUsers.size();i++){
+            Log.d(TAG, "Data: "+listUsers.get(i).getUsername()+" "+listUsers.get(i).getPassword());
+        }
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                if(txtUsername.getText().toString().equals("admin")&&txtPassword.getText().toString().equals("admin")){
-                    // Masuk ke activity baru
-                    Intent intent = new Intent(v.getContext(), HomeActivity.class);
-                    startActivity(intent);
-                }else{
+                User user = db.getUser(txtUsername.getText().toString(),txtPassword.getText().toString());
+                if(user!=null){
+                    Log.d(TAG, "onClick: btn login, "+user.getUsername()+" "+user.getPassword());
+                    if(txtUsername.getText().toString().equals(user.getUsername())&&txtPassword.getText().toString().equals(user.getPassword())){
+                        // Masuk ke activity baru
+                        Intent intent = new Intent(v.getContext(), HomeActivity.class);
+                        startActivity(intent);
+                    }
+                }
+                else{
                     Toast.makeText(getApplicationContext(),"Username atau Password Anda tidak benar!",Toast.LENGTH_LONG).show();
                 }
             }
