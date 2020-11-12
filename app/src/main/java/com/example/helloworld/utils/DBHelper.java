@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
 import com.example.helloworld.models.User;
 
 import java.util.ArrayList;
@@ -24,7 +22,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_USERS_TABLE = "CREATE TABLE "+TABLE_USERS+"(USERNAME TEXT PRIMARY KEY, PASSWORD TEXT)";
+        String CREATE_USERS_TABLE = "CREATE TABLE "+TABLE_USERS+"(EMAIL TEXT PRIMARY KEY, PASSWORD TEXT)";
         db.execSQL(CREATE_USERS_TABLE);
     }
 
@@ -38,16 +36,16 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues value = new ContentValues();
-        value.put("USERNAME",user.getUsername());
+        value.put("EMAIL",user.getEmail());
         value.put("PASSWORD",user.getPassword());
 
         db.insert(TABLE_USERS, null,value);
         db.close();
     }
 
-    public Boolean checkUserExists(String username){
+    public Boolean checkUserExists(String email){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM USERS WHERE USERNAME = ?", new String[]{username});
+        Cursor cursor = db.rawQuery("SELECT * FROM USERS WHERE EMAIL = ?", new String[]{email});
         if(cursor.getCount()>0){
             return true;
         }else{
@@ -55,9 +53,9 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public User getUser(String username, String password) {
+    public User getUser(String email, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM USERS WHERE USERNAME = ?  AND PASSWORD = ?", new String[]{username, password});
+        Cursor cursor = db.rawQuery("SELECT * FROM USERS WHERE EMAIL = ?  AND PASSWORD = ?", new String[]{email, password});
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             return new User(cursor.getString(0), cursor.getString(1));

@@ -15,14 +15,14 @@ import com.example.helloworld.utils.DBHelper;
 public class SignUpActivity extends AppCompatActivity {
 
     DBHelper db;
-    EditText username;
+    EditText email;
     EditText password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        username = (EditText)findViewById(R.id.editTextTextUsername);
+        email = (EditText)findViewById(R.id.editTextTextEmail);
         password = (EditText)findViewById(R.id.editTextTextPassword);
         db = new DBHelper(this);
     }
@@ -33,10 +33,10 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void signUp(View v) {
-        if(!db.checkUserExists(username.getText().toString())){
-            db.addRecord(new User(username.getText().toString(),password.getText().toString()));
+        if(!db.checkUserExists(email.getText().toString())){
+            db.addRecord(new User(email.getText().toString(),password.getText().toString()));
             Toast.makeText(getApplicationContext(),"Berhasil mendaftar",Toast.LENGTH_SHORT).show();
-            Log.d("SignUp", "signUp: "+username.toString()+" "+ password.toString());
+            Log.d("SignUp", "signUp: "+ email.toString()+" "+ password.toString());
             moveToLoginActivity(v);
         }else{
             Toast.makeText(getApplicationContext(),"User Exist",Toast.LENGTH_SHORT).show();
