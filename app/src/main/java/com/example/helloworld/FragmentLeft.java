@@ -3,6 +3,7 @@ package com.example.helloworld;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,12 +24,14 @@ public class FragmentLeft extends Fragment {
     private static final String TAG = "MainActivity";
     private Button btnStart = null;
     private Button btnStop = null;
+    private Button btnMgmtMhs = null;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         btnStart = getView().findViewById(R.id.startJob);
         btnStop = getView().findViewById(R.id.stopJob);
+        btnMgmtMhs = getView().findViewById(R.id.btnMgmtMhs);
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,6 +42,12 @@ public class FragmentLeft extends Fragment {
             @Override
             public void onClick(View v) {
                 cancelJob(v);
+            }
+        });
+        btnMgmtMhs.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                moveToManageMhsActivity(v);
             }
         });
     }
@@ -69,5 +78,9 @@ public class FragmentLeft extends Fragment {
         JobScheduler scheduler = (JobScheduler) getActivity().getSystemService(JOB_SCHEDULER_SERVICE);
         scheduler.cancel(123);
         Log.d(TAG, "Job cancelled");
+    }
+    public void moveToManageMhsActivity(View v){
+        Intent intent = new Intent(v.getContext(),ManageMhsActivity.class);
+        startActivity(intent);
     }
 }

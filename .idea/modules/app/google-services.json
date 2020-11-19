@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "457727054486",
+    "firebase_url": "https://progandro-hellow333.firebaseio.com",
+    "project_id": "progandro-hellow333",
+    "storage_bucket": "progandro-hellow333.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457727054486:android:251e355591d1a10772a8b7",
+        "android_client_info": {
+          "package_name": "com.example.helloworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457727054486-cbvjhvcv4nmmuhju29iolc54iot43knj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.helloworld",
+            "certificate_hash": "5bb909ff7cc9682e39467b3743c872c2c96c4eaf"
+          }
+        },
+        {
+          "client_id": "457727054486-rhe3gd26pta8frkj7oc4f28ke8mvv4gp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ0gVS9fLHSVyLX5fvZtjPYkqeBym9bUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457727054486-rhe3gd26pta8frkj7oc4f28ke8mvv4gp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
