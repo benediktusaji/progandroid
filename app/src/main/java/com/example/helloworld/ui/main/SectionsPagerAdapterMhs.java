@@ -2,7 +2,6 @@ package com.example.helloworld.ui.main;
 
 import android.content.Context;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
@@ -10,6 +9,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.helloworld.FragmentLeft;
+import com.example.helloworld.FragmentListMhs;
+import com.example.helloworld.FragmentMhs;
 import com.example.helloworld.FragmentRight;
 import com.example.helloworld.R;
 
@@ -17,13 +18,13 @@ import com.example.helloworld.R;
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-public class SectionsPagerAdapter extends FragmentPagerAdapter {
+public class SectionsPagerAdapterMhs extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_addMhs, R.string.tab_text_listMhs};
     private final Context mContext;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    public SectionsPagerAdapterMhs(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
     }
@@ -33,14 +34,13 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch (position){
             case 0:
-                fragment = new FragmentLeft();
+                fragment = new FragmentMhs();
                 break;
             case 1:
-                fragment = new FragmentRight();
+                fragment = new FragmentListMhs();
                 break;
         }
         return fragment;
-
     }
 
     @Nullable
@@ -54,11 +54,4 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // Show 2 total pages.
         return 2;
     }
-
-    @Override
-    public int getItemPosition(@NonNull Object object) {
-        return super.getItemPosition(object);
-    }
-
-
 }

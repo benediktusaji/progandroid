@@ -3,6 +3,8 @@
     <string name="title_activity_home2">HomeActivity2</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_addMhs">Data </string>
+    <string name="tab_text_listMhs">List </string>
     <string name="title_activity_home">HomeActivity</string>
     <string-array name="movie_name">
         <item>Breaking Bad</item>
@@ -14,4 +16,5 @@
         <item>This is desc</item>
         <item>This is desc</item>
     </string-array>
+    <string name="title_activity_manage_mhs">ManageMhsActivity</string>
 </resources>

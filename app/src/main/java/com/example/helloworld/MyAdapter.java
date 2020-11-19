@@ -1,6 +1,7 @@
 package com.example.helloworld;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.movieTitle.setText(s1[position]);
         holder.movieDesc.setText(s2[position]);
         holder.moviePoster.setImageResource(img[position]);
+        Log.d("movie", "onBindViewHolder: "+s1[position]);
     }
 
     @Override
