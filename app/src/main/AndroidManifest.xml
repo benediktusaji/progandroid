@@ -10,8 +10,6 @@
         android:name="android.hardware.camera"
         android:required="true" />
 
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CameraActivity"></activity>
+        <activity android:name=".OrientationActivity"></activity>
+        <activity android:name=".CameraActivity" />
         <activity
             android:name=".ManageMhsActivity"
             android:label="@string/title_activity_manage_mhs"
@@ -40,6 +39,7 @@
         <service
             android:name=".services.MyJobScheduler"
             android:permission="android.permission.BIND_JOB_SERVICE" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"

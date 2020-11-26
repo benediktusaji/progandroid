@@ -27,6 +27,7 @@ public class FragmentLeft extends Fragment {
     private Button btnStop = null;
     private Button btnMgmtMhs = null;
     private Button btnCamera;
+    private Button btnOrienation;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class FragmentLeft extends Fragment {
         btnStop = getView().findViewById(R.id.stopJob);
         btnMgmtMhs = getView().findViewById(R.id.btnMgmtMhs);
         btnCamera = getView().findViewById(R.id.btnCamera);
+        btnOrienation = getView().findViewById(R.id.btnOrientation);
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +59,13 @@ public class FragmentLeft extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(),CameraActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnOrienation.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(),OrientationActivity.class);
                 startActivity(intent);
             }
         });
