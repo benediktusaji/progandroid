@@ -5,6 +5,7 @@ import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,7 @@ public class FragmentLeft extends Fragment {
     private Button btnStart = null;
     private Button btnStop = null;
     private Button btnMgmtMhs = null;
+    private Button btnCamera;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class FragmentLeft extends Fragment {
         btnStart = getView().findViewById(R.id.startJob);
         btnStop = getView().findViewById(R.id.stopJob);
         btnMgmtMhs = getView().findViewById(R.id.btnMgmtMhs);
+        btnCamera = getView().findViewById(R.id.btnCamera);
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,6 +51,13 @@ public class FragmentLeft extends Fragment {
             @Override
             public void onClick(View v) {
                 moveToManageMhsActivity(v);
+            }
+        });
+        btnCamera.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(),CameraActivity.class);
+                startActivity(intent);
             }
         });
     }
